@@ -28,7 +28,19 @@
 <body class="m-0 font-sans antialiased font-normal text-left leading-default text-base dark:bg-slate-950 bg-gray-50 text-slate-500 dark:text-white">
     <x-layout.sidebar />
 
-    {{-- content dashboard  --}}
+    <main class="relative h-full max-h-screen min-h-screen transition-all duration-200 ease-soft-in-out xl:ml-68 rounded-xl">
+        <x-layout.navbar>
+            @isset($title)
+                {{ $title }}
+            @endisset
+        </x-layout.navbar>
+
+        <div class="content-panel p-9">
+            {{ $slot }}
+        </div>
+
+        <x-layout.footer />
+    </main>
 
     <x-layout.side-configurator-theme />
 
