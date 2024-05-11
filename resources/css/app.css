@@ -1,3 +1,6 @@
+@import "dashboard-tailwind.css";
+@import "perfect-scrollbar.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
