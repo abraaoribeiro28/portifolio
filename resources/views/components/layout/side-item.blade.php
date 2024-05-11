@@ -8,13 +8,13 @@
             $iconClass = 'shadow-soft-2xl fill-current text-black';
         }
 
-        if (isset($subitems) && $subitems){
+        if ($existSubItems = (isset($subitems) && $subitems)){
             $href = "javascript:;";
             $linkClass .= "after:ease-soft-in-out after:font-awesome-5-free after:ml-auto after:inline-block after:font-bold after:text-slate-800 after:antialiased after:transition-all after:duration-200 after:content-['\\f107']";
         }
     @endphp
 
-    <a collapse_trigger="primary" class="{{ $linkClass }} ease-soft-in-out text-sm py-2.7 my-0 mx-4 flex items-center whitespace-nowrap px-4 dark:text-white dark:opacity-80"
+    <a @if($existSubItems) collapse_trigger="primary" @endif class="{{ $linkClass }} ease-soft-in-out text-sm py-2.7 my-0 mx-4 flex items-center whitespace-nowrap px-4 dark:text-white dark:opacity-80"
        href="{{ $href ?? '#' }}" target="{{ $target ?? '_self' }}" aria-expanded="{{ $active ? 'true' : 'false' }}">
         <div class="{{ $iconClass }} stroke-none mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center p-2.5 text-center">
             {{ $icon ?? '' }}
@@ -24,7 +24,7 @@
         </span>
     </a>
 
-    @if(isset($subitems) && $subitems)
+    @if($existSubItems)
         <div class="h-auto overflow-hidden transition-all duration-200 ease-soft-in-out @if(!$active) max-h-0 @endif">
             <ul class="flex flex-wrap pl-4 mb-0 ml-6 list-none transition-all duration-200 ease-soft-in-out">
                 {{ $subitems }}
