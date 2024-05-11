@@ -6690,3 +6690,8 @@ h6 {
     opacity: 0.65;
   }
 }
+
+/* Custom height panel*/
+.content-panel {
+    min-height: calc(100vh - 117px - 1.5rem);
+}
