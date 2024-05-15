@@ -1,15 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Admin routes //
+Route::prefix('admin')->group(function () {
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    Route::view('dashboard', 'dashboard')
+        ->middleware(['auth', 'verified'])
+        ->name('dashboard');
+
+    Route::view('profile', 'profile')
+        ->middleware(['auth'])
+        ->name('profile');
+
+    Route::resource('usuarios', UserController::class);
+
+})->middleware(['auth']);
 
 require __DIR__.'/auth.php';
