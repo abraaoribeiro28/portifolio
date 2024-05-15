@@ -21,9 +21,17 @@
                 </x-slot>
             </x-layout.side-item>
 
+            <x-layout.side-item title="Usuários" href="{{ route('usuarios.index') }}" :active="request()->routeIs('usuarios.index')">
+                <x-slot name="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg>
+                </x-slot>
+            </x-layout.side-item>
+
             <x-layout.side-divider title="Divisor" />
 
-            <x-layout.side-item title="Crud" >
+            <x-layout.side-item title="Crud">
                 <x-slot name="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
                         <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778zM8.5.015V7.5h7.485A8 8 0 0 0 8.5.015"/>

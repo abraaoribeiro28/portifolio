@@ -1,4 +1,4 @@
-<li class="mt-0.5 w-full">
+<li class="mt-0.5 w-full" x-data="{ open: false}">
     @php
         if ($active = (isset($active) && $active)){
             $linkClass = 'xl:shadow-soft-xl rounded-lg  bg-white font-semibold text-slate-700 after:rotate-180 after:text-slate-800 transition-all';
@@ -14,8 +14,9 @@
         }
     @endphp
 
-    <a @if($existSubItems) collapse_trigger="primary" @endif class="{{ $linkClass }} ease-soft-in-out text-sm py-2.7 my-0 mx-4 flex items-center whitespace-nowrap px-4 dark:text-white dark:opacity-80"
-       href="{{ $href ?? '#' }}" target="{{ $target ?? '_self' }}" aria-expanded="{{ $active ? 'true' : 'false' }}">
+    <a class="{{ $linkClass }} ease-soft-in-out text-sm py-2.7 my-0 mx-4 flex items-center whitespace-nowrap px-4 dark:text-white dark:opacity-80"
+       @if($existSubItems) collapse_trigger="primary" aria-expanded="{{ $active ? 'true' : 'false' }}" @else wire:navigate.hover @endif
+       href="{{ $href ?? '#' }}" target="{{ $target ?? '_self' }}">
         <div class="{{ $iconClass }} stroke-none mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center p-2.5 text-center">
             {{ $icon ?? '' }}
         </div>
